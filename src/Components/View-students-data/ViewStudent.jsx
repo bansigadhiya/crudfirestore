@@ -3,14 +3,14 @@ import { Container, Table, Button, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import './ViewStudent.css';
 import { PencilSquare, Trash3Fill } from 'react-bootstrap-icons';
-import { DeleteStuAction, DeleteStuFirestore, GetInfoAction, GetStuFirestore,GetStuInfoFirestore } from '../../Services/Actions/CreateStu.action';
+import { DeleteStuAction, DeleteStuFirestore, GetInfoAction, GetStuFirestore, GetStuInfoFirestore } from '../../Services/Actions/CreateStu.action';
 import Skeleton from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
 import { useNavigate } from 'react-router-dom';
 
 function ViewStudent({ handleEdit }) {
 
-    const { studentList,isEdit } = useSelector((state) => state.CreateStuReducer);
+    const { studentList, isEdit } = useSelector((state) => state.CreateStuReducer);
     const { isLoading } = useSelector((state) => state.CreateStuReducer);
 
     const dispatch = useDispatch();
@@ -21,10 +21,6 @@ function ViewStudent({ handleEdit }) {
         handleEdit();
     }
 
-    const handleClick = () => {
-        navigate('/')
-    }
-
     const getData = () => {
         dispatch(GetStuFirestore())
     }
@@ -32,16 +28,13 @@ function ViewStudent({ handleEdit }) {
     useEffect(() => {
         console.log("useeffect");
         getData();
-    },[])
+    }, [])
 
     const studata = (studentList) => {
         return (
             <>
                 <Container>
-                    <Row className='align-items-center justify-content-between mt-3'>
-                        <h2 className='col-4'>Student Data</h2>
-                        <Button variant='primary' className='col-2 border-0' onClick={() => { handleClick() }}>Add Student</Button>
-                    </Row>
+                    <h2 className='text-center my-4 gradiant-text'>Student Data</h2>
                 </Container>
                 <Table className='mt-3' bordered hover>
                     <thead>
@@ -83,12 +76,12 @@ function ViewStudent({ handleEdit }) {
                                             </td>
                                             <td rowSpan="2">
                                                 <div className='d-flex action'>
-                                                    <Button variant="info" className='rounded-0 text-white mx-1 px-4' onClick={() => { handleUpdate(stu.id) }}>
+                                                    <Button variant="info" className='rounded-0 text-white mx-1 px-4 border-0' onClick={() => { handleUpdate(stu.id) }}>
                                                         <PencilSquare />
                                                         <span className='ps-2'>Edit</span>
                                                     </Button>
-                                                    <Button variant="danger" onClick={() => dispatch(DeleteStuFirestore(stu.id))} className='rounded-0 mx-1 px-4'>
-                                                        <Trash3Fill />
+                                                    <Button variant="danger" onClick={() => dispatch(DeleteStuFirestore(stu.id))} className='rounded-0 mx-1 px-4 border-0'>
+                                                        <Trash3Fill /> 
                                                         <span className='ps-2'>Delete</span>
                                                     </Button>
                                                 </div>
@@ -161,9 +154,9 @@ function ViewStudent({ handleEdit }) {
         )
     }
 
-    if(isEdit == true) {
+    if (isEdit == true) {
         navigate('/editStudent')
-    }else{
+    } else {
         return (
             <Container>
                 {

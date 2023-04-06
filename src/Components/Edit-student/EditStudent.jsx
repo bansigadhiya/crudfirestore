@@ -29,7 +29,7 @@ function EditStudent({handleEdit}) {
     }
 
     if(isEdit == false){
-        navigate('/viewstudent')
+        navigate('/')
     }else{
         return (
             <div>

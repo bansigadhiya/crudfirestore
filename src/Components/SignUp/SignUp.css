@@ -1,0 +1,14 @@
+.form-wrapper,
+.signup-btn {
+    background: rgb(251, 167, 154);
+    background: linear-gradient(90deg, rgba(251, 167, 154, 1) 0%, rgba(183, 189, 191, 1) 100%);
+}
+.signup-btn{
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+.already{
+    font-size: 13px;
+}

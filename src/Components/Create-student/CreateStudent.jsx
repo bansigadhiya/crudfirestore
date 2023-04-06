@@ -35,9 +35,7 @@ function CreateStudent() {
         const lastId = studentList.length > 0 ? studentList[studentList.length - 1].id : 0;
 
         const data = { ...initial, id: lastId + 1 }
-        // dispatch(CreateStuAsync(data));
         dispatch(CreateStuFirestore(data));
-        // navigate('/viewstudent');
         setInitial({
             fName: '',
             lName: '',
@@ -103,7 +101,7 @@ function CreateStudent() {
                                     </div>
                                 </Form.Group>
 
-                                <Button type="submit" className='btn-primary rounded-0 px-5 py-2 mt-3 border-0'>
+                                <Button type="submit" className='btn-primary rounded-0 px-5 py-2 mt-3 border-0 btn-bg'>
                                     Submit
                                 </Button>
                             </Form>
@@ -112,8 +110,6 @@ function CreateStudent() {
                             <img src="images/stu.png" alt="" className='img-fluid' />
                         </div>
                     </Row>
-
-                    <NavLink to='/viewstudent'>View student</NavLink>
                 </Container>
             </div>
         </div>
